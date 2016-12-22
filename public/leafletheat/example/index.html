@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaflet Quick Start Guide Example</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- REquarements for leaflet -->
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    
+    <!-- Requarements for D3-->
+    <script type="text/javascript" src="d3/d3.min.js"></script>
+    
+    <!-- Requarements for heatLeaflet -->
+    <script src="leafletheat/dist/leaflet-heat.js"></script>
+</head>
+
+<body onload="initmap()">
+    <div id='mapid' style="width: 1200px; height: 800px"></div>
+
+    <script>
+    function initmap(){
+        var map = L.map('mapid');
+        var ajaxRequest;
+        var plotlist;
+        var plotlayers=[];
+        var data;
+
+        // create the tile layer with correct attribution
+        var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+        var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 18, attribution: osmAttrib});
+
+        //map.setView(new L.LatLng(-23.5872988,-46.6176079),15) 
+        var mymap = map.setView(new L.LatLng(40.785091, -73.968285),11);
+        mymap.addLayer(osm);
+        
+    /*
+    $.get("points_BBox_Manhattan.json", 
+        function(gj) {
+            L.geoJson(gj, {
+                style: function(feature) 
+                {
+                    return {color: feature.properties.cor};
+                },
+                pointToLayer: function(feature, latlng)
+                {
+                    return new L.CircleMarker(latlng, {radius: 5, fillOpacity: 1});
+                },
+                onEachFeature: function (feature, layer) 
+                {
+                    layer.bindPopup(feature.properties.PK_COD_ENTIDADE+' - '+feature.properties.NO_ENTIDADE);
+                }
+            }).addTo(map);
+        });
+        function onMapClick(e) {
+            console.log(e.latlng);
+        }
+        //mymap.on('click', onMapClick);
+        
+        // Include the Manhattan polygon 
+        /*
+        var polygon = L.polygon(
+            [[40.69941387455636, -74.01493549346924],
+            [40.7008779731697, -74.00721073150635],
+            [40.70665271500208, -73.99755477905273],
+            [40.7080190595344, -73.99109601974487],
+            [40.71054021692633, -73.97545337677002],
+            [40.71693214299895, -73.97217035293579],
+            [40.72439674540761, -73.97058248519897],
+            [40.730332051771875, -73.96981000900267],
+            [40.73216945026674, -73.97197723388672],
+            [40.738998274248864, -73.97141933441162],
+            [40.7447697097984, -73.96914482116699],
+            [40.7521661695701, -73.96260023117064],
+            [40.75892792712667, -73.9568281173706],
+            [40.7664365730134, -73.94961833953857],
+            [40.77093810328312, -73.94521951675415],
+            [40.77623554249846, -73.94006967544556],
+            [40.782474929103884, -73.94225835800171],
+            [40.78863249902052, -73.93601417541504],
+            [40.79084193636794, -73.93449068069458],
+            [40.79595910082863, -73.92822504043579],
+            [40.80071852197889, -73.9285683631897],
+            [40.80755654675477, -73.93270969390869],
+            [40.80950549842112, -73.93376111984253],
+            [40.81702466709592, -73.93318176269531],
+            [40.82507881379304, -73.933846950531],
+            [40.83184938600655, -73.93455505371094],
+            [40.83546981598909, -73.93444776535034],
+            [40.84262891830849, -73.93052101135254],
+            [40.84895945297453, -73.92687320709229],
+            [40.85517577410636, -73.92219543457031],
+            [40.858405433950814, -73.91989946365356],
+            [40.861213000244305, -73.91704559326172],
+            [40.8659677399159, -73.91241073608398],
+            [40.87133872460768, -73.90966415405273],
+            [40.873594083759976, -73.91082286834717],
+            [40.875232821712515, -73.91631603240967],
+            [40.87653080318249, -73.92180919647215],
+            [40.87821814104651, -73.9274525642395],
+            [40.87211756235189, -73.93228054046631],
+            [40.869878379144026, -73.93326759338379],
+            [40.86772025410288, -73.932945728302],
+            [40.860109462370005, -73.93884658813477],
+            [40.856311853310146, -73.94150733947754],
+            [40.85329308567513, -73.94330978393555],
+            [40.85092341901843, -73.94828796386719],
+            [40.84430088751089, -73.94704341888428],
+            [40.837969907832864, -73.95060539245605],
+            [40.83339174582102, -73.95176410675049],
+            [40.828585959081536, -73.95545482635498],
+            [40.828780795048004, -73.95699977874754],
+            [40.82361744851427, -73.960862159729],
+            [40.821896243667254, -73.95978927612305],
+            [40.8017905629288, -73.97601127624512],
+            [40.791849155467695, -73.9833927154541],
+            [40.78541568674974, -73.98871421813965],
+            [40.772936879967105, -73.99901390075684],
+            [40.757075013897264, -74.01068687438965],
+            [40.752133659459204, -74.01412010192871],
+            [40.73776263423315, -74.01540756225586],
+            [40.716818297266144, -74.01978492736816],
+            [40.705172476790494, -74.02261734008789]]
+        ).addTo(mymap);*/
+        
+        //Read a tsv 
+
+        d3.tsv("data/0905012015.tsv", function(data) {
+            // use data here            
+            points = data.map( function(d){ return [parseFloat(d.lat), parseFloat(d.lng)]; } );
+            heat = L.heatLayer(points, {blur: 5, minOpacity:0.7,gradient: {0.0: 'blue', 0.0: 'lime', 1: 'red'}, radius:10}).addTo(mymap);
+            
+           
+        });
+    }
+    </script>
+</body>
+</html>

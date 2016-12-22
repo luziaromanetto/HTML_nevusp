@@ -1,0 +1,65 @@
+{   "type":"FeatureCollection",   
+    "features":
+        [{  "type":"Feature",
+            "geometry":
+                {   "type":"Point",
+                    "coordinates": [-73.9682, 40.7852]
+                },
+            "properties":
+                {   "PK_COD_ENTIDADE":35151476,
+                    "NO_ENTIDADE":"B00",
+                    "cor":"red"
+                }
+        },{
+            "type":"Feature",
+            "geometry":
+                {   "type":"Point",
+                    "coordinates":[-73.9681, 40.7852]
+                },
+            "properties":
+                {   "PK_COD_ENTIDADE":35176163,
+                    "NO_ENTIDADE":"B01",
+                    "cor":"red"
+                }
+        },{  "type":"Feature",
+            "geometry":
+                {   "type":"Point",
+                    "coordinates": [-73.9682, 40.7851]
+                },
+            "properties":
+                {   "PK_COD_ENTIDADE":52439293,
+                    "NO_ENTIDADE":"B10",
+                    "cor":"red"
+                }
+        },{  "type":"Feature",
+            "geometry":
+                {   "type":"Point",
+                    "coordinates": [-73.9681, 40.7851]
+                },
+            "properties":
+                {   "PK_COD_ENTIDADE":52439293,
+                    "NO_ENTIDADE":"B11",
+                    "cor":"red"
+                }
+        },{  "type":"Feature",
+            "geometry":
+                {   "type":"Point",
+                    "coordinates": [-73.88, 40.68]
+                },
+            "properties":
+                {   "PK_COD_ENTIDADE":52439293,
+                    "NO_ENTIDADE":"BBmin",
+                    "cor":"blue"
+                }
+        },{  "type":"Feature",
+            "geometry":
+                {   "type":"Point",
+                    "coordinates": [-74.05, 40.9]
+                },
+            "properties":
+                {   "PK_COD_ENTIDADE":52439293,
+                    "NO_ENTIDADE":"BBmax",
+                    "cor":"blue"
+                }
+        }]
+}

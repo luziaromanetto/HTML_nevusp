@@ -1,0 +1,25 @@
+{   "type":"FeatureCollection",   
+    "features":
+        [{  "type":"Feature",
+            "geometry":
+                {   "type":"Point",
+                    "coordinates": [-46.52279,-23.60759]
+                },
+            "properties":
+                {   "PK_COD_ENTIDADE":35151476,
+                    "NO_ENTIDADE":"VIDA NOVA COLEGIO",
+                    "cor":"#8204A7"
+                }
+        },{
+            "type":"Feature",
+            "geometry":
+                {   "type":"Point",
+                    "coordinates":[-46.67117,-23.615823]
+                },
+            "properties":
+                {   "PK_COD_ENTIDADE":35176163,
+                    "NO_ENTIDADE":"CAMPO BELO-BEM QUERER COLEGIO UNIDADE I",
+                    "cor":"#E66D5A"
+                }
+        }]
+}
